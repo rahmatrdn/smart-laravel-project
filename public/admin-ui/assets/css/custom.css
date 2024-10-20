@@ -1,0 +1,171 @@
+th {
+    color: #8f8f8f;
+    font-size: 13px;
+}
+
+input::placeholder {
+    color: #cfcfcf !important;
+    /* Ganti dengan kode warna yang Anda inginkan */
+    opacity: 1;
+    /* Untuk memastikan warna sesuai dengan yang diinginkan */
+}
+
+.text-gray-1 {
+    color: #e0e0e0;
+}
+
+.text-gray-2 {
+    color: #bbbbbb;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .container-fluid {
+        padding: 10px !important;
+        margin-top: 20;
+    }
+
+    .body-wrapper-inner {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .card-body {
+        padding: 20px !important;
+    }
+}
+
+.letter-spacing-1 {
+    letter-spacing: 0.5px;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 1.4px;
+}
+
+
+hr.dotted {
+    border: none;
+    border-top: 2px dashed rgb(168, 168, 168);
+    color: black;
+    background-color: transparent;
+    height: 1px;
+}
+
+.text-gray-sm {
+    color: rgb(207, 207, 207) !important;
+}
+
+.text-gray-md {
+    color: rgb(172, 172, 172) !important;
+}
+
+.text-gray-lg {
+    color: rgb(125, 125, 125) !important;
+}
+
+.box-icon {
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    font-size: 30px;
+}
+
+.box-icon.primary {
+    box-shadow: 0px 4px 18px 0px rgba(99, 91, 255, 0.15);
+}
+
+.fs-sm {
+    font-size: 14px !important;
+}
+
+.fs-md {
+    font-size: 22px !important;
+}
+
+.big-title h1 {
+    font-size: 50px !important;
+}
+
+@media only screen and (max-width: 568px) {
+    .fs-sm {
+        font-size: 12px !important;
+    }
+
+    .fs-md {
+        font-size: 14px !important;
+    }
+
+    .big-title h1 {
+        font-size: 30px !important;
+    }
+}
+
+.nav-pills .nav-link:not(.active):hover {
+    background-color: #e0e0e0;
+    /* Warna saat hover */
+    border-color: #ccc;
+    /* Batas saat hover */
+}
+
+.nav-pills .nav-link:not(.active) {
+    background-color: #ffffff;
+}
+
+
+.table-header {
+    font-weight: bolder;
+    color: #989898 !important;
+    letter-spacing: 2px;
+    width: var(--width, auto);
+}
+
+
+/* NPROGRESS CUSTOM */
+#nprogress .bar {
+    background: var(--bs-primary);
+
+    height: 3px !important;
+}
+
+/* #nprogress .peg {
+            box-shadow: 0 0 10px #dd3e22, 0 0 5px #dd3e22;
+        }  */
+
+
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+/* TOAST-CSS */
+@keyframes slide-out-left {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+.toast.slide-in {
+    animation: slide-in-right 0.5s forwards;
+}
+
+.toast.slide-out {
+    animation: slide-out-left 0.5s forwards;
+}
