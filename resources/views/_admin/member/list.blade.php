@@ -106,7 +106,8 @@
                                                 </li>
                                                 <li><a class="dropdown-item text-danger"
                                                         href="{{ base_url($page['route'] . "/delete/{$d->id}") }}"
-                                                        onclick="return confirm('Apakah kamu Yakin?')">Hapus</a></li>
+                                                        onclick="return confirm('Apakah kamu Yakin?')"
+                                                        navigate-delete>Hapus</a></li>
                                             </ul>
                                         </div>
                                     </td>

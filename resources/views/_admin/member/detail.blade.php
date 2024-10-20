@@ -39,7 +39,7 @@
                             </div>
                             <div class="mb-2">
                                 <label for="">Identitas ID ({{ getMemberIdentityCtg($data->category_id) }})</label>
-                                <p class="mb-0 fs-5"><strong>{{ title($data->identity_no) }} {{ ($data->category_id == 2) ? " - ".$data->identity_type : "" }}</strong></p>
+                                <p class="mb-0 fs-5"><strong>{{ title($data->identity_no) }}</strong></p>
                             </div>
                             <div class="mb-2">
                                 <label for="">Tahun Masuk </label>

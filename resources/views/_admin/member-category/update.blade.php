@@ -27,7 +27,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ base_url($page['route'] . '/update/' . $data->id) }}">
+                        <form method="POST" action="{{ base_url($page['route'] . '/update/' . $data->id) }}" form-navigate>
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama Kategori</label>

@@ -28,7 +28,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ base_url($page['route'] . '/add') }}">
+                        <form method="POST" action="{{ base_url($page['route'] . '/add') }}" form-navigate>
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama</label>
@@ -49,13 +49,6 @@
                                 <input type="text" class="form-control" name="identity_no" id="identity_no"
                                     value="{{ old('identity_no') }}" required>
                                 <small>Perhatian! Jika Siswa pakai NISN, Jika Guru / Pegawai pakai NIP</small>
-                            </div>
-                            <div class="mb-3">
-                                <label for="identity_type" class="form-label">Jenis Identitas (opsional)</label>
-                                <input type="text" class="form-control" name="identity_type" id="identity_type"
-                                    value="{{ old('identity_type') }}">
-                                <small>Jika siswa, diisi dengan nama jurusan + kelas. Contoh: RPL 1, RPL 2, TKJ 1,
-                                    dll.</small>
                             </div>
                             <div class="mb-3">
                                 <label for="join_year" class="form-label">Tahun Masuk</label>

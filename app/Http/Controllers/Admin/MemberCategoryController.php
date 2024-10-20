@@ -49,20 +49,12 @@ class MemberCategoryController extends Controller
         );
 
         if (empty($createProcess['error'])) {
-            // return redirect()
-            //     ->intended($this->baseRedirect)
-            //     ->with('success', $createProcess['message']);
-
             return response()->json([
                 "success" => true, 
-                "message" => $createProcess['message'],
+                "message" =>  ResponseEntity::SUCCESS_MESSAGE_CREATED,
                 "redirect" => "member-category"
             ]);
         } else {
-            // return redirect()
-            //     ->intended($this->baseRedirect)
-            //     ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE)
-            
             return response()->json([
                 "success" => false, 
                 "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
@@ -88,21 +80,25 @@ class MemberCategoryController extends Controller
         ]);
     }
 
-    public function doUpdate(int $id, Request $request): RedirectResponse
+    public function doUpdate(int $id, Request $request): JsonResponse
     {
-        $createProcess = $this->usecase->update(
+        $process = $this->usecase->update(
             data: $request,
             id: $id,
         );
 
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', ResponseEntity::SUCCESS_MESSAGE_UPDATED);
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true, 
+                "message" => ResponseEntity::SUCCESS_MESSAGE_UPDATED,
+                "redirect" => "member-category"
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => true, 
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => "member-category"
+            ]);
         }
     }
 
@@ -120,7 +116,7 @@ class MemberCategoryController extends Controller
             ]);
         } else {
             return response()->json([
-                "success" => true, 
+                "success" => false, 
                 "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
                 "redirect" => "member-category"
             ]);

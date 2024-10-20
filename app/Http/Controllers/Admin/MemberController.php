@@ -33,11 +33,9 @@ class MemberController extends Controller
     public function __construct(
         MemberUsecase $usecase,
         MemberCategoryUsecase $memberCategoryUsecase,
-        LoanUsecase $loanUsecase,
     ) {
         $this->usecase = $usecase;
         $this->memberCategoryUsecase = $memberCategoryUsecase;
-        $this->loanUsecase = $loanUsecase;
         $this->baseRedirect = "admin/" . $this->page['route'];
     }
 
@@ -67,20 +65,24 @@ class MemberController extends Controller
         ]);
     }
 
-    public function doCreate(Request $request): RedirectResponse
+    public function doCreate(Request $request): JsonResponse
     {
-        $createProcess = $this->usecase->create(
+        $process = $this->usecase->create(
             data: $request,
         );
 
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', $createProcess['message']);
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true, 
+                "message" => ResponseEntity::SUCCESS_MESSAGE_UPDATED,
+                "redirect" => "member"
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => false, 
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => "member"
+            ]);
         }
     }
 
@@ -105,39 +107,63 @@ class MemberController extends Controller
         ]);
     }
 
-    public function doUpdate(int $id, Request $request): RedirectResponse
+    public function doUpdate(int $id, Request $request): JsonResponse
     {
-        $createProcess = $this->usecase->update(
+        $process = $this->usecase->update(
             data: $request,
             id: $id,
         );
 
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', ResponseEntity::SUCCESS_MESSAGE_UPDATED);
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true, 
+                "message" => ResponseEntity::SUCCESS_MESSAGE_UPDATED,
+                "redirect" => "member"
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => false, 
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => "member"
+            ]);
         }
     }
 
-    public function doDelete(int $id, Request $request): RedirectResponse
+    public function doDelete(int $id, Request $request): JsonResponse
     {
-        $createProcess = $this->usecase->delete(
-            id: $id,
+        $process = $this->usecase->importProcess(
+            data: $request,
         );
-
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', ResponseEntity::SUCCESS_MESSAGE_DELETED);
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true, 
+                "message" => ResponseEntity::SUCCESS_MESSAGE_DELETED,
+                "redirect" => "member"
+            ]);
         } else {
+            return response()->json([
+                "success" => false, 
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => "member"
+            ]);
+        }
+    }
+
+    public function detail(int $id): View|RedirectResponse
+    {
+        $data = $this->usecase->getByID($id);
+
+        if (empty($data['data'])) {
             return redirect()
                 ->intended($this->baseRedirect)
                 ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
         }
+        $data = $data['data'] ?? [];
+
+        return render_view("_admin.member.detail", [
+            'data' => (object) $data,
+            'page' => $this->page,
+        ]);
     }
 
     public function searchAPI(Request $req): JsonResponse
@@ -159,66 +185,5 @@ class MemberController extends Controller
         }
 
         return response()->json($result);
-    }
-
-    public function import(): View
-    {
-        return render_view("_admin.member.import", [
-            'page' => $this->page,
-        ]);
-    }
-
-    public function doReview(Request $req): View | RedirectResponse
-    {
-        $data = $this->usecase->getExcelFile($req);
-
-        if (empty($data['error'])) {
-            return render_view("_admin.member.import-review", [
-                'page' => $this->page,
-                'data' => $data
-            ]);
-        } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
-        }
-    }
-
-    public function doImportInsert(Request $request): RedirectResponse
-    {
-        $createProcess = $this->usecase->importProcess(
-            data: $request,
-        );
-
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', "Import Data Berhasil!");
-        } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
-        }
-    }
-
-    public function detail(int $id): View|RedirectResponse
-    {
-        $data = $this->usecase->getByID($id);
-
-        if (empty($data['data'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
-        }
-        $data = $data['data'] ?? [];
-
-        $loans = $this->loanUsecase->getAllByMemberID($id);
-        $loans = $loans['data'] ?? [];
-
-        return render_view("_admin.member.detail", [
-            'data' => (object) $data,
-            'page' => $this->page,
-            'loans' => $loans,
-        ]);
     }
 }
