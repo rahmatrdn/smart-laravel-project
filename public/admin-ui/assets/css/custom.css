@@ -126,7 +126,7 @@ hr.dotted {
 
 /* NPROGRESS CUSTOM */
 #nprogress .bar {
-    background: var(--bs-primary);
+    background: var(--bs-primary) !important;
 
     height: 3px !important;
 }

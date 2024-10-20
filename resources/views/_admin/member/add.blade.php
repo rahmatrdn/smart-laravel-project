@@ -10,7 +10,7 @@
                         <div class="col-md-6 text-end">
                             <div class="">
                                 <a href="{{ base_url($page['route'] . '/') }}"
-                                    class="btn btn-outline-indigo btn-sm fw-bold" navigate>
+                                    class="btn btn-outline-warning btn-sm fw-bold" navigate>
                                     <b>← Kembali</b>
                                 </a>
                             </div>
