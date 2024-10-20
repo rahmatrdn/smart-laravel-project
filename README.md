@@ -3,7 +3,12 @@ Skeleton / Boilerplate Laravel untuk projectmu!
 "Simple, Fast, Powerfull"
 
 ## Tentang Project
-Project ini dibuat untuk kamu yang ingin develop aplikasi yang powerfull.
+Project ini dibuat untuk kamu yang ingin develop aplikasi yang powerfull dengan Laravel.
+
+## Teknologi
+- PHP Versi 8.3
+- MySQL / MariaDB
+- Laravel 11
 
 ## Cara Install
 1. Setup library dari Composer. Jalankan `composer install`
