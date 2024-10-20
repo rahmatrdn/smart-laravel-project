@@ -131,9 +131,10 @@ class MemberController extends Controller
 
     public function doDelete(int $id, Request $request): JsonResponse
     {
-        $process = $this->usecase->importProcess(
-            data: $request,
+        $process = $this->usecase->delete(
+            id: $id,
         );
+
         if (empty($process['error'])) {
             return response()->json([
                 "success" => true, 
