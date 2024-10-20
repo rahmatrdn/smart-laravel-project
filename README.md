@@ -7,14 +7,14 @@ Project ini dibuat untuk kamu yang ingin develop aplikasi yang powerfull dengan 
 
 ## Teknologi
 - PHP Versi 8.3
-- MySQL / MariaDB
+- Database MySQL / MariaDB
 - Laravel 11
 
 ## Cara Install
 1. Setup library dari Composer. Jalankan `composer install`
 2. Konfigurasi file ENV, Lakukan copy file .env.example menjadi .env
 3. Jalankan `php artisan key:generate`
-3. Import database di folder `database/smartproject.sql` di localmu
+3. Bikin database, lalu import database di folder `database/smartproject.sql` ke database localmu
 4. Dah! Jalankan aplikasi `php artisan serve`
 
 ## Kontribusi
