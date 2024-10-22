@@ -32,6 +32,9 @@ class AuthController extends Controller
         $request->session()->invalidate();
 
         if (Auth::attempt($credentials)) {
+            $accessType = Auth::user()->access_type;
+            session(['access_type' => $accessType]);
+
             $request->session()->regenerate();
 
             return redirect()->intended('admin')->with('success', "Selamat Datang kembali!");

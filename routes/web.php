@@ -21,6 +21,11 @@ Route::get('/admin/auth/login', [AuthController::class, 'login'])->name('login')
 Route::post('/admin/auth/login', [AuthController::class, 'doLogin'])->name('do-login');
 Route::get('/admin/auth/logout', [AuthController::class, 'doLogout'])->name('do-logout');
 
+// Example Check Access Type
+Route::prefix('admin')->middleware(["auth", "access-type:2"])->group(function () {
+    Route::get('/xx', [DashboardController::class, 'index']);
+});
+
 Route::prefix('admin')->middleware("auth")->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
 

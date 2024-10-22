@@ -16,6 +16,7 @@ class DashboardController extends Controller
 
     public function index(): View
     {
+        // dd(session('access_type'));
 
         return render_view("_admin.dashboard");
     }
