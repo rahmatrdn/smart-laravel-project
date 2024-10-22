@@ -386,3 +386,17 @@ function render_view($view_name, $data = [])
         return view('_admin/_layout/app')->with('content', view($view_name, $data)->render());
     }
 }
+
+function getUserAccessType($id)
+{
+    $data = [
+        1 => "Admin (Semua Akses)",
+        2 => "Pegawai",
+    ];
+
+    if (array_key_exists($id, $data)) {
+        return $data[$id];
+    } else {
+        return null; // atau bisa diganti dengan nilai default jika ID tidak ditemukan
+    }
+}

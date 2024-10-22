@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberCategoryController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 const BY_ID = "/{id}";
@@ -41,5 +42,18 @@ Route::prefix('admin')->middleware("auth")->group(function () {
         Route::get(ENDPOINT_EDIT_BY_ID, [MemberCategoryController::class, 'update']);
         Route::post(ENDPOINT_DO_UPDATE_BY_ID, [MemberCategoryController::class, 'doUpdate']);
         Route::get(ENDPOINT_DELETE_BY_ID, [MemberCategoryController::class, 'doDelete']);
+    });
+
+    Route::prefix('user')->group(function () {
+        Route::get('/', [UserController::class, 'index']);
+        Route::get('/add', [UserController::class, 'add']);
+        Route::post('/add', [UserController::class, 'doCreate']);
+        Route::get(ENDPOINT_EDIT_BY_ID, [UserController::class, 'update']);
+        Route::post(ENDPOINT_DO_UPDATE_BY_ID, [UserController::class, 'doUpdate']);
+        Route::get(ENDPOINT_EDIT_BY_ID, [UserController::class, 'update']);
+        Route::get('/change-password', [UserController::class, 'changePassword']);
+        Route::post('/change-password', [UserController::class, 'doChangePassword']);
+        Route::get('/reset-password/{id}', [UserController::class, 'resetPassword']);
+        Route::get(ENDPOINT_DELETE_BY_ID, [UserController::class, 'doDelete']);
     });
 });

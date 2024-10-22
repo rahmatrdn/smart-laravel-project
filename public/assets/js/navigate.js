@@ -46,7 +46,7 @@ $(document).on('click', '[navigate]', function (e) {
     }
 });
 
-$(document).on('click', '[navigate-delete]', function (e) {
+$(document).on('click', '[navigate-api]', function (e) {
     e.preventDefault();
     var url = $(this).attr('href');
 
@@ -57,6 +57,26 @@ $(document).on('click', '[navigate-delete]', function (e) {
         lostInternet();
     }
 });
+$(document).on('click', '[navigate-api-confirm]', function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    
+    var confirmMessage = $(this).attr('confirm-message') || 'Apakah kamu yakin?';
+    var confirmation = confirm(confirmMessage);
+
+    if (!confirmation) {
+        return false;
+    }
+
+    // Jika user menekan tombol Yes, lanjutkan pengecekan koneksi
+    if (navigator.onLine) {
+        window.history.pushState(null, '', url);
+        loadPage(url, true);
+    } else {
+        lostInternet();
+    }
+});
+
 
 $(window).on('popstate', function () {
     if (navigator.onLine) {
@@ -85,7 +105,7 @@ function showValidationErrors(errors) {
 
 defaultSubmitBtnText = $('button[type="submit"]').text()
 
-$(document).on('submit', 'form[form-navigate]', function (e) {
+$(document).on('submit', 'form[navigate-form]', function (e) {
 
     e.preventDefault(); // Mencegah default form submit (reload halaman)
     var form = $(this);

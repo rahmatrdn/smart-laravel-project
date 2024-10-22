@@ -1,0 +1,65 @@
+/* Menambahkan buletan di depan <li> */
+.with-bullets li {
+    list-style-type: disc;
+    /* Tipe buletan */
+    margin-left: 30px !important;
+    /* Supaya ada jarak dari tepi kiri */
+}
+
+.with-bullets li a {
+    text-decoration: none;
+    /* Hilangkan underline dari link */
+    color: inherit;
+    /* Sesuaikan warna dengan default */
+}
+
+.with-bullets li a:hover {
+    color: #6610f2;
+    /* Warna ketika di-hover */
+}
+
+.collapse.show {
+    display: block;
+    /* Pastikan dropdown muncul ketika class 'show' ditambahkan */
+}
+
+.collapse {
+    padding: 2px !important
+}
+
+.sidebar-link.active {
+    font-weight: bold;
+    color: var(--bs-primary);
+    background-image: var(--bs-gradient) !important;
+}
+
+.nav-item {
+    padding-bottom: 3px !important;
+}
+
+.nav-item a.active {
+    font-weight: 800;
+    color: var(--bs-primary)
+}
+
+.mm-collapse:not(.mm-show) {
+    display: none;
+}
+
+.sidebar-item {
+    margin-bottom: 10px !important
+}
+
+.sidebar-link svg {
+    font-size: 15px !important
+}
+
+
+aside.left-sidebar {
+    background: linear-gradient(269.48deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgb(240, 239, 255) 100%);
+
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}

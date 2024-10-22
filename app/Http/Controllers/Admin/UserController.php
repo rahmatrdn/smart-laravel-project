@@ -7,6 +7,7 @@ use App\Entities\ResponseEntity;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Usecases\UserUsecase;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,8 +15,8 @@ class UserController extends Controller
 {
     protected $usecase;
     protected $page = [
-        "route" => "users",
-        "title" => "Data Pengguna",
+        "route" => "user",
+        "title" => "Pengguna Aplikasi",
     ];
     protected $baseRedirect;
 
@@ -29,7 +30,7 @@ class UserController extends Controller
     {
         $data = $this->usecase->getAll();
 
-        return view("_admin.users.list", [
+        return render_view("_admin.users.list", [
             'data' => $data['data']['list'] ?? [],
             'page' => $this->page,
         ]);
@@ -37,25 +38,29 @@ class UserController extends Controller
 
     public function add(): View
     {
-        return view("_admin.users.add", [
+        return render_view("_admin.users.add", [
             'page' => $this->page,
         ]);
     }
 
-    public function doCreate(Request $request): RedirectResponse
+    public function doCreate(Request $request): JsonResponse
     {
-        $createProcess = $this->usecase->create(
+        $process = $this->usecase->create(
             data: $request,
         );
 
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', $createProcess['message']);
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true,
+                "message" => ResponseEntity::SUCCESS_MESSAGE_CREATED,
+                "redirect" => $this->page['route']
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => false,
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => $this->page['route']
+            ]);
         }
     }
 
@@ -70,86 +75,98 @@ class UserController extends Controller
         }
         $data = $data['data'] ?? [];
 
-        return view("_admin.users.update", [
+        return render_view("_admin.users.update", [
             'data' => (object) $data,
             'page' => $this->page,
         ]);
     }
 
-    public function doUpdate(int $id, Request $request): RedirectResponse
+    public function doUpdate(int $id, Request $request): JsonResponse
     {
-        $createProcess = $this->usecase->update(
+        $process = $this->usecase->update(
             data: $request,
             id: $id,
         );
 
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', ResponseEntity::SUCCESS_MESSAGE_UPDATED);
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true,
+                "message" => ResponseEntity::SUCCESS_MESSAGE_UPDATED,
+                "redirect" => $this->page['route']
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => false,
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => $this->page['route']
+            ]);
         }
     }
 
-    public function doDelete(int $id): RedirectResponse
+    public function doDelete(int $id): JsonResponse
     {
-        $createProcess = $this->usecase->delete(id: $id);
+        $process = $this->usecase->delete(id: $id);
 
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', ResponseEntity::SUCCESS_MESSAGE_DELETED);
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true,
+                "message" => ResponseEntity::SUCCESS_MESSAGE_DELETED,
+                "redirect" => $this->page['route']
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => false,
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => $this->page['route']
+            ]);
         }
     }
 
     public function changePassword(): View
     {
-
-        return view("_admin.users.change-password", [
+        return render_view("_admin.users.change-password", [
             'page' => $this->page,
         ]);
     }
 
     // Method untuk memproses perubahan password
-    public function doChangePassword(Request $request): RedirectResponse
+    public function doChangePassword(Request $request): JsonResponse
     {
-        $createProcess = $this->usecase->changePassword(
+        $process = $this->usecase->changePassword(
             data: $request->input(),
         );
 
-        if (empty($createProcess['error'])) {
-            return redirect()
-                ->intended("admin/users/change-password")
-                ->with('success', "Password berhasil diubah!");
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true,
+                "message" => "Password berhasil diubah!",
+                "redirect" => "user/change-password"
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => false,
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => "user/change-password"
+            ]);
         }
     }
-    public function resetPassword(int $id): RedirectResponse
+
+    public function resetPassword(int $id): JsonResponse
     {
-        // Panggil usecase untuk reset password
         $resetProcess = $this->usecase->resetPassword(id: $id);
 
-        // Cek jika berhasil
-        if (empty($resetProcess['error'])) {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('success', 'Password berhasil direset menjadi default.');
+        if (empty($process['error'])) {
+            return response()->json([
+                "success" => true,
+                "message" => 'Password berhasil direset menjadi default',
+                "redirect" => $this->page['route']
+            ]);
         } else {
-            return redirect()
-                ->intended($this->baseRedirect)
-                ->with('error', ResponseEntity::DEFAULT_ERROR_MESSAGE);
+            return response()->json([
+                "success" => false,
+                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
+                "redirect" => $this->page['route']
+            ]);
         }
     }
-
-
 }

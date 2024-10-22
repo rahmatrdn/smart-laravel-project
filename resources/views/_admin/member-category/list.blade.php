@@ -8,16 +8,9 @@
                         </div>
                         <div class="col-md-6 text-end">
                             <div class="text-md-end text-start">
-                                <a href="{{ base_url($page['route'] . '/add') }}" class="btn btn-primary btn fw-bold"
+                                <a href="{{ base_url($page['route'] . '/add') }}" class="btn btn-primary btn fw-bold bg-gradient"
                                     navigate>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 5l0 14" />
-                                        <path d="M5 12l14 0" />
-                                    </svg>
+                                    @include('_admin._layout.icons.plus')
                                     <b>Tambah Data</b>
                                 </a>
                             </div>
@@ -35,8 +28,9 @@
                                     <td>{{ $d->name }}</td>
                                     <td class="text-center">
                                         <div class="dropdown">
-                                            <button class="btn btn-light btn-sm shadow-sm border-1 border-primary-subtle" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button
+                                                class="btn btn-light btn-sm shadow-sm border-1 border-primary-subtle"
+                                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -59,8 +53,8 @@
                                                 <li>
                                                     <a class="dropdown-item text-danger"
                                                         href="{{ base_url($page['route'] . "/delete/{$d->id}") }}"
-                                                        onclick="return confirm('Apakah kamu Yakin?')"
-                                                        navigate-delete>Hapus</a>
+                                                        confirm-message="Apakah kamu yakin menghapus {{ $d->name }}?"
+                                                        navigate-api-confirm>Hapus</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -81,3 +75,5 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ url('admin-ui') }}/assets/js/paginate.js"></script>

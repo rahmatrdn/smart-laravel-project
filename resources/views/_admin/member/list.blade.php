@@ -8,16 +8,9 @@
                         </div>
                         <div class="col-md-6 text-end">
                             <div class="text-md-end text-start">
-                                <a href="{{ base_url($page['route'] . '/add') }}" class="btn btn-primary btn fw-bold"
+                                <a href="{{ base_url($page['route'] . '/add') }}" class="btn btn-primary btn fw-bold bg-gradient"
                                     navigate>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="icon icon-tabler icons-tabler-outline icon-tabler-plus">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                        <path d="M12 5l0 14" />
-                                        <path d="M5 12l14 0" />
-                                    </svg>
+                                    @include('_admin._layout.icons.plus')
                                     <b>Tambah Data</b>
                                 </a>
                             </div>
@@ -47,7 +40,7 @@
                                     </select>
                                 </div>
                                 <div class="mb-0">
-                                    <button type="submit" class="btn btn-primary"><b>Pencarian</b></button>
+                                    <button type="submit" class="btn btn-primary bg-gradient"><b>Pencarian</b></button>
                                     @if (!empty($filter['filter_on']))
                                         <a href="{{ base_url('member') }}" class="btn btn-outline-warning ms-1"
                                             navigate>Reset
@@ -104,10 +97,10 @@
                                                 <li>
                                                     <hr class="dropdown-divider">
                                                 </li>
-                                                <li><a class="dropdown-item text-danger"
-                                                        href="{{ base_url($page['route'] . "/delete/{$d->id}") }}"
-                                                        onclick="return confirm('Apakah kamu Yakin?')"
-                                                        navigate-delete>Hapus</a></li>
+                                                <a class="dropdown-item text-danger"
+                                                    href="{{ base_url($page['route'] . "/delete/{$d->id}") }}"
+                                                    confirm-message="Apakah kamu yakin menghapus {{ $d->name }}?"
+                                                    navigate-api-confirm>Hapus</a>
                                             </ul>
                                         </div>
                                     </td>

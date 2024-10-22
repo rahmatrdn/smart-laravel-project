@@ -88,13 +88,14 @@ class UserUsecase extends Usecase
         try {
             DB::table(DatabaseEntity::USER)
                 ->insert([
-                    'name'       => $data['name'],
-                    'email'      => $data['email'],
-                    'password'   => Hash::make('asdasd'),
+                    'name'        => $data['name'],
+                    'email'       => $data['email'],
+                    'access_type' => $data['access_type'],
+                    'password'    => Hash::make('asdasd'),
                     'access_type' => 1,
-                    'is_active'  => 1,
-                    'created_by' => Auth::user()->id,
-                    'created_at' => now(),
+                    'is_active'   => 1,
+                    'created_by'  => Auth::user()->id,
+                    'created_at'  => now(),
                 ]);
 
             DB::commit();
@@ -123,10 +124,11 @@ class UserUsecase extends Usecase
         $validator->validate();
 
         $update = [
-            'name'       => $data['name'],
-            'email'      => $data['email'],
-            'updated_by' => Auth::user()->id,
-            'updated_at' => now(),
+            'name'        => $data['name'],
+            'email'       => $data['email'],
+            'access_type' => $data['access_type'],
+            'updated_by'  => Auth::user()->id,
+            'updated_at'  => now(),
         ];
 
         DB::beginTransaction();
@@ -188,39 +190,6 @@ class UserUsecase extends Usecase
         }
     }
 
-    // public function changePassword(int $id, string $newPassword): array
-    // {
-    //     $funcName = $this->className . ".changePassword";
-
-    //     $updateData = [
-    //         'password' => Hash::make($newPassword),
-    //         'updated_by' => Auth::user()->id,
-    //         'updated_at' => now(),
-    //     ];
-
-    //     DB::beginTransaction();
-
-    //     try {
-    //         DB::table(DatabaseEntity::USER)
-    //             ->where('id', $id)
-    //             ->update($updateData);
-
-    //         DB::commit();
-
-    //         return Response::buildSuccess(
-    //             message: ResponseEntity::SUCCESS_MESSAGE_UPDATED
-    //         );
-    //     } catch (\Exception $e) {
-    //         DB::rollback();
-    //         Log::error($e->getMessage(), [
-    //             'func_name' => $funcName,
-    //             'user' => Auth::user()
-    //         ]);
-
-    //         return Response::buildErrorService($e->getMessage());
-    //     }
-    // }
-
     public function changePassword(array $data): array
     {
         $userID = Auth::user()->id;
@@ -228,11 +197,23 @@ class UserUsecase extends Usecase
         $funcName = $this->className . ".changePassword";
 
         $validator = Validator::make($data, [
-            'current_password' => 'required',
-            'password'         => 'required',
+            'current_password' => [
+                'required',
+                function ($attribute, $value, $fail) use ($userID) {
+                    $user = DB::connection(DatabaseEntity::SQL_READ)
+                        ->table(DatabaseEntity::USER)
+                        ->where('id', (int) $userID)
+                        ->first(['password']);
+                        
+                    if (!Hash::check($value, $user->password)) {
+                        $fail('Password saat ini salah.');
+                    }
+                },
+            ],
+            'password'         => 'required|min:6', // tambahkan aturan sesuai kebutuhan
             're_password'      => 'required|same:password',
         ]);
-
+        
         $customAttributes = [
             'current_password' => 'Password Lama',
             'password'         => 'Password Baru',
@@ -240,26 +221,17 @@ class UserUsecase extends Usecase
         ];
         $validator->setAttributeNames($customAttributes);
         $validator->validate();
-
-        $user = DB::connection(DatabaseEntity::SQL_READ)
-            ->table(DatabaseEntity::USER)
-            ->where('id', (int) $userID)
-            ->first(['password']);
-
-        if (!password_verify($data['current_password'], $user->password)) {
-            return Response::buildErrorService("Password saat ini salah!");
-        }
-
+        
         DB::beginTransaction();
 
         try {
-            $lockedPackage = DB::table(DatabaseEntity::USER)
+            $locked = DB::table(DatabaseEntity::USER)
                 ->where('id', $userID)
                 ->whereNull("deleted_at")
                 ->lockForUpdate()
                 ->first(['id']);
 
-            if (!$lockedPackage) {
+            if (!$locked) {
                 DB::rollback();
 
                 throw new Exception("FAILED LOCKED DATA");

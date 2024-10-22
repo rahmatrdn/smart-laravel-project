@@ -11,10 +11,10 @@
 
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/style.css?v={{ env('APP_VERSION') }}" />
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/custom.css?v={{ env('APP_VERSION') }}" />
+    <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/sidebar.css?v={{ env('APP_VERSION') }}" />
 
     {{-- External CSS Libraries --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.7/metisMenu.min.css" />
 
     @yield('css')
@@ -85,11 +85,11 @@
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                     aria-labelledby="drop2">
                                     <div class="message-body">
-                                        <a href="javascript:void(0)"
-                                            class="d-flex align-items-center gap-2 dropdown-item">
-                                            <i class="ti ti-user fs-6"></i>
-                                            <p class="mb-0 fs-3">My Profile</p>
+                                        <a href="{{ base_url("user/change-password") }}"
+                                            class="d-flex align-items-center gap-2 dropdown-item" navigate>
+                                            <p class="mb-0 fs-3">Ubah Password</p>
                                         </a>
+                                        <hr>
                                         <a href="{{ base_url('auth/logout') }}"
                                             class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                                     </div>

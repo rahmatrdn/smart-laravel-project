@@ -2,73 +2,6 @@
         $page = Request::segment(2);
     @endphp
 
-    <style>
-        /* Menambahkan buletan di depan <li> */
-        .with-bullets li {
-            list-style-type: disc;
-            /* Tipe buletan */
-            margin-left: 30px !important;
-            /* Supaya ada jarak dari tepi kiri */
-        }
-
-        .with-bullets li a {
-            text-decoration: none;
-            /* Hilangkan underline dari link */
-            color: inherit;
-            /* Sesuaikan warna dengan default */
-        }
-
-        .with-bullets li a:hover {
-            color: #6610f2;
-            /* Warna ketika di-hover */
-        }
-
-        .collapse.show {
-            display: block;
-            /* Pastikan dropdown muncul ketika class 'show' ditambahkan */
-        }
-
-        .collapse {
-            padding: 2px !important
-        }
-
-        .sidebar-link.active {
-            font-weight: bold;
-            /* Membuat teks menjadi bold */
-            color: #6610f2;
-            /* Sesuaikan warna jika diperlukan */
-        }
-
-        .nav-item {
-            padding-bottom: 3px !important;
-        }
-
-        .nav-item a.active {
-            font-weight: 800;
-            color: var(--bs-primary)
-        }
-
-        .mm-collapse:not(.mm-show) {
-            display: none;
-        }
-
-        .sidebar-item {
-            margin-bottom: 10px !important
-        }
-
-        .sidebar-link svg {
-            font-size: 15px !important
-        }
-    </style>
-
-    <style>
-        aside.left-sidebar {
-            background: linear-gradient(269.48deg,
-                    rgba(255, 255, 255, 1) 0%,
-                    rgb(240, 239, 255) 100%);
-        }
-    </style>
-
     <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
         <ul id="sidebarnav">
             <li class="nav-small-cap mb-3 mt-4" style="color: #adadad">
@@ -102,6 +35,13 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link {{ $page == 'user' ? 'active' : '' }}" href="{{ base_url('user') }}" aria-expanded="false"
+                    navigate>
+                    @include('_admin._layout.icons.users')
+                    <span class="hide-menu">Pengguna Aplikasi</span>
+                </a>
             </li>
             {{-- <li>
                 <span class="sidebar-divider lg"></span>
