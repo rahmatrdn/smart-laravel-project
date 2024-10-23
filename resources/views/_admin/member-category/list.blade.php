@@ -22,7 +22,7 @@
                             <th class="table-header" style="--width: 80%">NAMA</th>
                             <th class="table-header text-center">AKSI</th>
                         </thead>
-                        <tbody>
+                        <tbody style="background-color: red">
                             @foreach ($data as $d)
                                 <tr>
                                     <td>{{ $d->name }}</td>

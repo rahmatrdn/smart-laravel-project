@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/style.css?v={{ env('APP_VERSION') }}" />
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/custom.css?v={{ env('APP_VERSION') }}" />
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/sidebar.css?v={{ env('APP_VERSION') }}" />
+    <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/dark.css?v={{ env('APP_VERSION') }}" />
 
     {{-- External CSS Libraries --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">

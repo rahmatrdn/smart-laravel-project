@@ -14,7 +14,7 @@
 }
 
 .with-bullets li a:hover {
-    color: #6610f2;
+    color: var(--bs-primary);
     /* Warna ketika di-hover */
 }
 

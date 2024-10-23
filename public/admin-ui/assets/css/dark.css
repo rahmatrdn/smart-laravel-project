@@ -1,0 +1,87 @@
+[data-bs-theme=dark] {
+    .card {
+        background-color: rgb(38, 38, 38) !important;
+    }
+
+    h4 {
+        color: rgb(204, 204, 204);
+    }
+
+    .form-label {
+        color: rgb(198, 198, 198);
+    }
+
+    .breadcrumb-item.active {
+        color: rgb(190, 190, 190);
+    }
+
+    .table-light {
+        --bs-table-color: #fff;
+        --bs-table-bg: #3b3b3b;
+        --bs-table-border-color: rgb(34.5, 58.8, 83.1);
+        --bs-table-striped-bg: rgb(22.25, 47.9, 73.55);
+        --bs-table-striped-color: #fff;
+        --bs-table-active-bg: rgb(34.5, 58.8, 83.1);
+        --bs-table-active-color: #fff;
+        --bs-table-hover-bg: rgb(28.375, 53.35, 78.325);
+        --bs-table-hover-color: #fff;
+        color: var(--bs-table-color);
+        border-color: var(--bs-table-border-color);
+    }
+
+    tbody {
+        --bs-table-color: #d3d3d3;
+        --bs-table-bg: #252525;
+        --bs-table-border-color: rgb(74, 74, 74);
+        --bs-table-striped-bg: rgb(46, 46, 46);
+        --bs-table-striped-color: #000;
+        --bs-table-active-bg: rgb(103, 103, 103);
+        --bs-table-active-color: #000;
+        --bs-table-hover-bg: rgb(68, 68, 68);
+        --bs-table-hover-color: #ffffff;
+        color: white;
+        border-color: var(--bs-table-border-color);
+    }
+
+    .body-wrapper-inner {
+        background-color: rgb(50, 50, 50);
+    }
+
+    .app-header {
+        background-color: rgba(108, 108, 108, 0);
+    }
+
+    aside.left-sidebar {
+        background: linear-gradient(269.48deg,
+                rgb(79, 79, 79) 0%,
+                rgb(62, 62, 65) 100%);
+
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .sidebar-link {
+        color: rgb(225, 225, 225);
+    }
+
+    .sidebar-link:hover {
+        color: #c5c5c5 !important;
+    }
+
+    .with-bullets li a {
+        color: rgb(179, 179, 179);
+    }
+
+    .nav-item a.active {
+        font-weight: 800;
+        color: rgb(255, 255, 255)
+    }
+}
+
+[data-bs-theme=light] {
+
+    .table-dark {
+        --bs-table-bg: #ffffff;
+    }
+
+}
