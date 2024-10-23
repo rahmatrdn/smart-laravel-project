@@ -88,11 +88,16 @@
                                     <div class="message-body">
                                         <a href="{{ base_url("user/change-password") }}"
                                             class="d-flex align-items-center gap-2 dropdown-item" navigate>
+
+                                            <p class="mb-0 fs-3">Tampilan Gelap / Cerah</p>
+                                        </a>
+                                        <a href="{{ base_url("user/change-password") }}"
+                                            class="d-flex align-items-center gap-2 dropdown-item" navigate>
                                             <p class="mb-0 fs-3">Ubah Password</p>
                                         </a>
                                         <hr>
                                         <a href="{{ base_url('auth/logout') }}"
-                                            class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                            class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
                                     </div>
                                 </div>
                             </li>
