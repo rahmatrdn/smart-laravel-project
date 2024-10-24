@@ -7,6 +7,8 @@
         color: rgb(204, 204, 204);
     }
 
+    
+
     .form-label {
         color: rgb(198, 198, 198);
     }
@@ -75,6 +77,19 @@
     .nav-item a.active {
         font-weight: 800;
         color: rgb(255, 255, 255)
+    }
+
+    .form-select {
+        background-color: #252525;
+        color: #fff;
+    }
+
+    .form-control {
+        color: #fff;
+    }
+
+    small {
+        color: #fff;
     }
 }
 
