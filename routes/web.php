@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MemberCategoryController;
 use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,9 +57,14 @@ Route::prefix('admin')->middleware("auth")->group(function () {
         Route::get(ENDPOINT_EDIT_BY_ID, [UserController::class, 'update']);
         Route::post(ENDPOINT_DO_UPDATE_BY_ID, [UserController::class, 'doUpdate']);
         Route::get(ENDPOINT_EDIT_BY_ID, [UserController::class, 'update']);
-        Route::get('/change-password', [UserController::class, 'changePassword']);
-        Route::post('/change-password', [UserController::class, 'doChangePassword']);
         Route::get('/reset-password/{id}', [UserController::class, 'resetPassword']);
         Route::get(ENDPOINT_DELETE_BY_ID, [UserController::class, 'doDelete']);
+    });
+    
+    Route::prefix('setting')->group(function () {
+        Route::get('/general', [SettingController::class, 'general']);
+        Route::post('/general', [SettingController::class, 'doUpdateGeneral']);
+        Route::get('/change-password', [SettingController::class, 'changePassword']);
+        Route::post('/change-password', [SettingController::class, 'doChangePassword']);
     });
 });

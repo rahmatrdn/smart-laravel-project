@@ -43,6 +43,13 @@
                     <span class="hide-menu">Pengguna Aplikasi</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link {{ $page == 'setting' ? 'active' : '' }}" href="{{ base_url('setting/general') }}" aria-expanded="false"
+                    navigate>
+                    @include('_admin._layout.icons.setting')
+                    <span class="hide-menu">Pengaturan</span>
+                </a>
+            </li>
             {{-- <li>
                 <span class="sidebar-divider lg"></span>
             </li> --}}

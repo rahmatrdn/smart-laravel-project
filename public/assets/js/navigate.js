@@ -27,8 +27,12 @@ function loadPage(url = "", returnedJson = false) {
             }
             NProgress.done();
         },
-        error: function () {
-            alert('Terjadi kesalahan saat memuat halaman.');
+        error: function (xhr, status, error) {
+            if (xhr.status === 401) {
+                window.location.href = BASE_URL + "/auth/login";
+            } else {
+                alert('Terjadi kesalahan saat memuat halaman.');
+            }
             NProgress.done();
         }
     });

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="{{ session("theme") ?? "light" }}">
 
 <head>
     <meta charset="utf-8">
@@ -86,16 +86,6 @@
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                     aria-labelledby="drop2">
                                     <div class="message-body">
-                                        <button
-                                            class="d-flex align-items-center gap-2 dropdown-item" id="theme-toggle">
-
-                                            <p class="mb-0 fs-3">Tampilan Gelap</p>
-                                        </button>
-                                        <a href="{{ base_url("user/change-password") }}"
-                                            class="d-flex align-items-center gap-2 dropdown-item" navigate>
-                                            <p class="mb-0 fs-3">Ubah Password</p>
-                                        </a>
-                                        <hr>
                                         <a href="{{ base_url('auth/logout') }}"
                                             class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
                                     </div>
@@ -216,14 +206,11 @@
             });
 
             document.getElementById('date').innerHTML = `<b>${dateStr}</b>`;
-            document.getElementById('time').innerHTML = `<b>${timeStr}</b>`;
+            document.getElementById('time').innerHTML = `<b>${timeStr}</b> WIB`;
         }
 
         setInterval(updateTime, 1000); // Update every second
     </script>
-
-
-    <script></script>
 
     <script>
         $(document).ready(function() {
@@ -244,31 +231,6 @@
             });
         });
     </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const themeToggle = document.getElementById('theme-toggle');
-        const html = document.documentElement;
-
-        // Cek preferensi tema dari localStorage
-        if (localStorage.getItem('theme') === 'dark') {
-            html.setAttribute('data-bs-theme', 'dark');
-            themeToggle.textContent = 'Tampilan Terang';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            if (html.getAttribute('data-bs-theme') === 'dark') {
-                html.setAttribute('data-bs-theme', 'light');
-                themeToggle.textContent = 'Tampilan Gelap';
-                localStorage.setItem('theme', 'light');
-            } else {
-                html.setAttribute('data-bs-theme', 'dark');
-                themeToggle.textContent = 'Tampilan Terang';
-                localStorage.setItem('theme', 'dark');
-            }
-        });
-    });
-</script>
 </body>
 
 </html>

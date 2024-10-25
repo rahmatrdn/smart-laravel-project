@@ -1,15 +1,17 @@
 [data-bs-theme=dark] {
     .card {
-        background-color: rgb(38, 38, 38) !important;
+        background-color: rgb(41, 41, 41) !important;
     }
 
     h4 {
         color: rgb(204, 204, 204);
     }
 
-    
 
     .form-label {
+        color: rgb(198, 198, 198);
+    }
+    .col-form-label {
         color: rgb(198, 198, 198);
     }
 
@@ -46,7 +48,7 @@
     }
 
     .body-wrapper-inner {
-        background-color: rgb(50, 50, 50);
+        background-color: rgb(21, 21, 21);
     }
 
     .app-header {
@@ -55,8 +57,8 @@
 
     aside.left-sidebar {
         background: linear-gradient(269.48deg,
-                rgb(79, 79, 79) 0%,
-                rgb(62, 62, 65) 100%);
+                rgb(0, 0, 0) 0%,
+                rgb(59, 58, 76) 100%);
 
         border-top-right-radius: 30px;
         border-bottom-right-radius: 30px;
@@ -89,7 +91,22 @@
     }
 
     small {
-        color: #fff;
+        color: #dedede;
+    }
+
+    .bg-light {
+        background-color: rgb(71, 71, 71) !important;
+    }
+
+    .text-dark {
+        color: #d3d3d3 !important;
+    }
+
+    input::placeholder {
+        color: rgb(89, 89, 89) !important;
+        /* Ganti dengan warna yang Anda inginkan */
+        opacity: 1;
+        /* Mengatur seberapa transparan placeholder (1 = 100% terlihat) */
     }
 }
 

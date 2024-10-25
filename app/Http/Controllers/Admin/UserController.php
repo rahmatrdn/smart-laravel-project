@@ -122,35 +122,6 @@ class UserController extends Controller
         }
     }
 
-    public function changePassword(): View
-    {
-        return render_view("_admin.users.change-password", [
-            'page' => $this->page,
-        ]);
-    }
-
-    // Method untuk memproses perubahan password
-    public function doChangePassword(Request $request): JsonResponse
-    {
-        $process = $this->usecase->changePassword(
-            data: $request->input(),
-        );
-
-        if (empty($process['error'])) {
-            return response()->json([
-                "success" => true,
-                "message" => "Password berhasil diubah!",
-                "redirect" => "user/change-password"
-            ]);
-        } else {
-            return response()->json([
-                "success" => false,
-                "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
-                "redirect" => "user/change-password"
-            ]);
-        }
-    }
-
     public function resetPassword(int $id): JsonResponse
     {
         $resetProcess = $this->usecase->resetPassword(id: $id);
