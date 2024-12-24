@@ -20,7 +20,7 @@
                     aria-expanded="{{ in_array($page, ['member']) ? 'true' : 'false' }}">
                     @include('_admin._layout.icons.member')
 
-                    <span class="hide-menu">Anggota</span>
+                    <span class="hide-menu">Anggota (Example)</span>
                 </a>
                 <ul
                     class="collapse with-bullets show mm-collapse {{ in_array($page, ['member', 'member-category']) ? 'show mm-collapse mm-show' : '' }}">

@@ -179,3 +179,7 @@ hr.dotted {
 .card-body {
     padding: 20px;
 }
+
+.btn {
+    border-radius: 10px;
+}
