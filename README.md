@@ -1,21 +1,39 @@
 # Smart Laravel Project
-Skeleton / Boilerplate Laravel untuk projectmu!
-"Simple, Fast, Powerfull"
+`laravel-skeleton` A Skeleton/Boilerplate for Your Laravel Projects!  
+"Simple, Fast, Powerful"
 
-## Tentang Project
-Project ini dibuat untuk kamu yang ingin develop aplikasi yang powerfull dengan Laravel.
+## About the Project
+This project is designed for developers who want to build powerful applications using Laravel with ease and efficiency.
 
-## Teknologi
-- PHP Versi 8.3
-- Database MySQL / MariaDB
-- Laravel 11
+## Technology Stack
+- **PHP Version:** 8.3  
+- **Database:** MySQL / MariaDB  
+- **Framework:** Laravel 11  
 
-## Cara Install
-1. Setup library dari Composer. Jalankan `composer install`
-2. Konfigurasi file ENV, Lakukan copy file .env.example menjadi .env
-3. Jalankan `php artisan key:generate`
-3. Bikin database, lalu import database di folder `database/smartproject.sql` ke database localmu
-4. Dah! Jalankan aplikasi `php artisan serve`
+## Installation Guide
+Follow these simple steps to set up the project:
 
-## Kontribusi
-Ayo berkontribusi! Silahkan Fork repo ini, lalu bikin Pull Request.
+1. Install the required dependencies using Composer:  
+   ```bash
+   composer install
+   ```
+2. Configure the environment file:  
+   Copy `.env.example` to `.env` and update the configuration according to your setup.
+3. Generate the application key:  
+   ```bash
+   php artisan key:generate
+   ```
+4. Create a new database and import the provided SQL file located at:  
+   ```text
+   database/smartproject.sql
+   ```
+5. Run the application:  
+   ```bash
+   php artisan serve
+   ```
+
+That's it! Your application is now ready. Open it in your browser.
+
+## Contribution
+We welcome contributions!  
+Fork this repository, make your improvements, and submit a Pull Request to collaborate with us. 

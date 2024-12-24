@@ -30,29 +30,36 @@
                         </a>
                     </li>
                     <li class="py-2 nav-item {{ $page == 'member-category' ? 'active' : '' }}">
-                        <a href="{{ base_url('member-category') }}" navigate class="{{ $page == 'member-category' ? 'active' : '' }}">
+                        <a href="{{ base_url('member-category') }}" navigate
+                            class="{{ $page == 'member-category' ? 'active' : '' }}">
                             <p class="mb-0">Data Kategori Anggota</p>
                         </a>
                     </li>
                 </ul>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link {{ $page == 'user' ? 'active' : '' }}" href="{{ base_url('user') }}" aria-expanded="false"
-                    navigate>
+                <a class="sidebar-link {{ $page == 'user' ? 'active' : '' }}" href="{{ base_url('user') }}"
+                    aria-expanded="false" navigate>
                     @include('_admin._layout.icons.users')
                     <span class="hide-menu">Pengguna Aplikasi</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link {{ $page == 'setting' ? 'active' : '' }}" href="{{ base_url('setting/general') }}" aria-expanded="false"
-                    navigate>
+                <a class="sidebar-link {{ $page == 'setting' ? 'active' : '' }}"
+                    href="{{ base_url('setting/general') }}" aria-expanded="false" navigate>
                     @include('_admin._layout.icons.setting')
                     <span class="hide-menu">Pengaturan</span>
                 </a>
             </li>
-            {{-- <li>
-                <span class="sidebar-divider lg"></span>
-            </li> --}}
 
+            <span class="sidebar-divider lg my-4"></span>
+            <li class="sidebar-item">
+                <div class="d-grid gap-2">
+                    <a class="btn btn-outline-danger text-start rounded-3" href="{{ base_url('auth/logout') }}"
+                        aria-expanded="false" onclick="return confirm('Apakah kamu yakin?')">
+                        <span class="hide-menu"><b>Keluar Aplikasi</b></span>
+                    </a>
+                </div>
+            </li>
         </ul>
     </nav>

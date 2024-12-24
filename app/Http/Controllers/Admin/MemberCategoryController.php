@@ -8,6 +8,7 @@ use App\Usecases\MemberCategoryUsecase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class MemberCategoryController extends Controller
@@ -25,7 +26,7 @@ class MemberCategoryController extends Controller
         $this->baseRedirect = "admin/" . $this->page['route'];
     }
 
-    public function index(Request $req): View
+    public function index(Request $req): View | Response
     {
         $data = $this->usecase->getAll();
 
@@ -35,7 +36,7 @@ class MemberCategoryController extends Controller
         ]);
     }
 
-    public function add(): View
+    public function add(): View | Response
     {
         return render_view("_admin.member-category.add", [
             'page' => $this->page,
@@ -63,7 +64,7 @@ class MemberCategoryController extends Controller
         }
     }
 
-    public function update(int $id): View|RedirectResponse
+    public function update(int $id): View | Response|RedirectResponse
     {
         $data = $this->usecase->getByID($id);
 

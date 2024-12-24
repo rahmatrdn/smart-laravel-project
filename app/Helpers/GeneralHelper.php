@@ -377,13 +377,20 @@ function get($data): string {
 
 function render_view($view_name, $data = [])
 {
-    // Cek apakah request berasal dari AJAX
     if (request()->ajax()) {
-        // Hanya kembalikan konten view tanpa layout
+        return response()->view($view_name, $data)->header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    } else {
+        return view('_admin/_layout/app')->with('content', view($view_name, $data)->render());
+    }
+}
+function render($view_name, $data = [])
+{
+    $parent = explode(".", $view_name);
+
+    if (request()->ajax()) {
         return view($view_name, $data);
     } else {
-        // Kembalikan layout utama dengan konten view
-        return view('_admin/_layout/app')->with('content', view($view_name, $data)->render());
+        return view($parent[0] . '/_layout/app')->with('content', view($view_name, $data)->render());
     }
 }
 

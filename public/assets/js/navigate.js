@@ -64,7 +64,7 @@ $(document).on('click', '[navigate-api]', function (e) {
 $(document).on('click', '[navigate-api-confirm]', function (e) {
     e.preventDefault();
     var url = $(this).attr('href');
-    
+
     var confirmMessage = $(this).attr('confirm-message') || 'Apakah kamu yakin?';
     var confirmation = confirm(confirmMessage);
 
@@ -119,11 +119,18 @@ $(document).on('submit', 'form[navigate-form]', function (e) {
     var submitButton = form.find('button[type="submit"]');
     var buttonText = submitButton.text(); // Menyimpan teks asli tombol submit
 
+    
+    defaultSubmitBtnText = ""
     if (defaultSubmitBtnText == "") {
         defaultSubmitBtnText = buttonText
+
+        if (defaultSubmitBtnText == " Memproses ...") {
+            defaultSubmitBtnText = "Simpan Data"
+        }
     }
 
-    console.log(buttonText)
+    console.log(buttonText);
+    console.log(defaultSubmitBtnText);
 
     if (navigator.onLine) {
         NProgress.start();
@@ -150,6 +157,8 @@ $(document).on('submit', 'form[navigate-form]', function (e) {
                     NProgress.done();
                 }
 
+                $('.modal-backdrop.fade.show').remove();
+                $('body').removeAttr('style').removeClass();
                 // submitButton.removeClass('disabled');
                 // submitButton.html(defaultSubmitBtnText);
             },

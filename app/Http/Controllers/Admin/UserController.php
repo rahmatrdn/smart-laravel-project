@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Usecases\UserUsecase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -26,7 +27,7 @@ class UserController extends Controller
         $this->baseRedirect = "admin/" . $this->page['route'];
     }
 
-    public function index(): View
+    public function index(): View | Response
     {
         $data = $this->usecase->getAll();
 
@@ -36,7 +37,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function add(): View
+    public function add(): View | Response
     {
         return render_view("_admin.users.add", [
             'page' => $this->page,
@@ -64,7 +65,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(int $id): View|RedirectResponse
+    public function update(int $id): View|RedirectResponse | Response
     {
         $data = $this->usecase->getByID($id);
 

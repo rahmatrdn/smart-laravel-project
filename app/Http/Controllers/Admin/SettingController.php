@@ -9,6 +9,7 @@ use App\Usecases\UserUsecase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class SettingController extends Controller
@@ -30,7 +31,7 @@ class SettingController extends Controller
         $this->baseRedirect = "admin/" . $this->page['route'];
     }
 
-    public function general(Request $req): View
+    public function general(Request $req): View | Response
     {
         $theme = session("theme") ?? "light";
 
@@ -94,7 +95,7 @@ class SettingController extends Controller
         }
     }
 
-    public function changePassword(): View
+    public function changePassword(): View | Response
     {
         return render_view("_admin.setting.change-password", [
             'page' => $this->page,

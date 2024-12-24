@@ -52,7 +52,7 @@
     }
 
     .app-header {
-        background-color: rgba(108, 108, 108, 0);
+        background-color: #21252A;
     }
 
     aside.left-sidebar {
@@ -60,20 +60,22 @@
                 rgb(0, 0, 0) 0%,
                 rgb(59, 58, 76) 100%);
 
-        border-top-right-radius: 30px;
-        border-bottom-right-radius: 30px;
     }
 
     .sidebar-link {
         color: rgb(225, 225, 225);
     }
 
-    .sidebar-link:hover {
-        color: #c5c5c5 !important;
+    .sidebar-link:hover:not(.active) {
+        color: #aaaaaa !important;
     }
 
     .with-bullets li a {
         color: rgb(179, 179, 179);
+    }
+
+    .with-bullets li a:hover:not(.active) {
+        color: rgb(143, 143, 143) !important;
     }
 
     .nav-item a.active {
@@ -103,17 +105,36 @@
     }
 
     input::placeholder {
-        color: rgb(89, 89, 89) !important;
+        color: rgb(134, 134, 134) !important;
         /* Ganti dengan warna yang Anda inginkan */
         opacity: 1;
         /* Mengatur seberapa transparan placeholder (1 = 100% terlihat) */
+    }
+
+    select, input, textarea {
+        background-color: rgb(69, 69, 69) !important;
+        border: none
+    }
+    
+    .select2-container--bootstrap-5 .select2-selection {
+        background-color: rgb(69, 69, 69) !important;
+        color: white !important;
+    }
+
+    .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+        color: white !important;
+    }
+
+    .card-list {
+        border-width: 1px !important;
+        border-color: rgb(83, 83, 83);
     }
 }
 
 [data-bs-theme=light] {
 
     .table-dark {
-        --bs-table-bg: #ffffff;
+        --bs-table-bg: #f0b2a100;
     }
 
 }

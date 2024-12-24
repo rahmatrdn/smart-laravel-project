@@ -14,6 +14,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -39,10 +40,10 @@ class MemberController extends Controller
         $this->baseRedirect = "admin/" . $this->page['route'];
     }
 
-    public function index(Request $req): View
+    public function index(Request $req): View | Response
     {
         $data = $this->usecase->getAll($req->input());
-        
+
         $memberCategories = $this->memberCategoryUsecase->getAll();
         $memberCategories = $memberCategories['data']['list'] ?? [];
 
@@ -54,7 +55,7 @@ class MemberController extends Controller
         ]);
     }
 
-    public function add(): View
+    public function add(): View | Response
     {
         $memberCategories = $this->memberCategoryUsecase->getAll();
         $memberCategories = $memberCategories['data']['list'] ?? [];
@@ -73,20 +74,20 @@ class MemberController extends Controller
 
         if (empty($process['error'])) {
             return response()->json([
-                "success" => true, 
+                "success" => true,
                 "message" => ResponseEntity::SUCCESS_MESSAGE_UPDATED,
                 "redirect" => "member"
             ]);
         } else {
             return response()->json([
-                "success" => false, 
+                "success" => false,
                 "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
                 "redirect" => "member"
             ]);
         }
     }
 
-    public function update(int $id): View|RedirectResponse
+    public function update(int $id): View|RedirectResponse | Response
     {
         $data = $this->usecase->getByID($id);
 
@@ -116,13 +117,13 @@ class MemberController extends Controller
 
         if (empty($process['error'])) {
             return response()->json([
-                "success" => true, 
+                "success" => true,
                 "message" => ResponseEntity::SUCCESS_MESSAGE_UPDATED,
                 "redirect" => "member"
             ]);
         } else {
             return response()->json([
-                "success" => false, 
+                "success" => false,
                 "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
                 "redirect" => "member"
             ]);
@@ -137,20 +138,20 @@ class MemberController extends Controller
 
         if (empty($process['error'])) {
             return response()->json([
-                "success" => true, 
+                "success" => true,
                 "message" => ResponseEntity::SUCCESS_MESSAGE_DELETED,
                 "redirect" => "member"
             ]);
         } else {
             return response()->json([
-                "success" => false, 
+                "success" => false,
                 "message" => ResponseEntity::DEFAULT_ERROR_MESSAGE,
                 "redirect" => "member"
             ]);
         }
     }
 
-    public function detail(int $id): View|RedirectResponse
+    public function detail(int $id): View|RedirectResponse | Response
     {
         $data = $this->usecase->getByID($id);
 

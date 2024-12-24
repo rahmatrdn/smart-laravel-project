@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="{{ session("theme") ?? "light" }}">
+<html lang="en" data-bs-theme="{{ session('theme') ?? 'light' }}">
 
 <head>
     <meta charset="utf-8">
@@ -19,6 +19,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.7/metisMenu.min.css" />
 
     @yield('css')
+
+    <script src="{{ url('admin-ui') }}/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).on('input', 'input[type="text"], textarea', function() {
+            let inputElement = $(this)[0];
+            let start = inputElement.selectionStart;
+            let end = inputElement.selectionEnd;
+            let upperCaseValue = $(this).val().toUpperCase();
+            $(this).val(upperCaseValue);
+            inputElement.setSelectionRange(start, end);
+        });
+    </script>
 </head>
 
 <body>
@@ -31,7 +43,8 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a class="text-nowrap logo-img">
-                        <img src="{{ url('admin-ui') }}/assets/images/logos/logo-2.png" alt="" width="200" />
+                        <img src="{{ url('admin-ui') }}/assets/images/logos/logo-2.png" alt=""
+                            width="200" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 12 12">
@@ -50,11 +63,29 @@
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <header class="app-header">
+            <header class="app-header p-0 pe-md-3">
                 <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                        <div class="d-none d-md-none d-lg-block">
+                            <p class="mb-0 text-gray-2 badge bg-light text-dark" id="date">
+                            </p>
+                            <p class="mb-0 text-gray-2 badge bg-primary-subtle text-primary" id="time">
+                            </p>
+                        </div>
+                        <ul
+                            class="navbar-nav flex-row ms-auto align-items-center justify-content-end d-block d-xl-none d-lg-none">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <img src="{{ url('admin-ui') }}/assets/images/logos/logo-2.png"
+                                        alt="" width="150" class="img-fluid" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <ul class="navbar-nav">
-                        <li class="nav-item d-block d-xl-none">
-                            <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)">
+                        <li class="nav-item d-block d-xl-none d-lg-block">
+                            <a class="nav-link sidebartoggler py-0" id="headerCollapse" href="javascript:void(0)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"
                                     viewBox="0 0 24 24">
                                     <g>
@@ -65,34 +96,9 @@
                                             d="M18.75 8a.75.75 0 0 1-.75.75H6a.75.75 0 0 1 0-1.5h12a.75.75 0 0 1 .75.75m0 4a.75.75 0 0 1-.75.75H6a.75.75 0 0 1 0-1.5h12a.75.75 0 0 1 .75.75m0 4a.75.75 0 0 1-.75.75H6a.75.75 0 0 1 0-1.5h12a.75.75 0 0 1 .75.75" />
                                     </g>
                                 </svg>
-
                             </a>
                         </li>
                     </ul>
-                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-                        <div class="d-none d-md-block">
-                            <p class="mb-0 text-gray-2 badge bg-light text-dark" id="date">
-                            </p>
-                            <p class="mb-0 text-gray-2 badge bg-primary-subtle text-primary" id="time">
-                            </p>
-                        </div>
-                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <img src="{{ url('admin-ui') }}/assets/images/user.png" alt=""
-                                        width="25" height="25" class="">
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-                                    aria-labelledby="drop2">
-                                    <div class="message-body">
-                                        <a href="{{ base_url('auth/logout') }}"
-                                            class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                 </nav>
             </header>
             <!--  Header End -->
@@ -113,7 +119,6 @@
         const BASE_URL = "<?= base_url('') ?>";
     </script>
 
-    <script src="{{ url('admin-ui') }}/assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="{{ url('admin-ui') }}/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url('admin-ui') }}/assets/js/sidebarmenu.js"></script>
     <script src="{{ url('admin-ui') }}/assets/js/app.min.js"></script>
@@ -229,6 +234,16 @@
                 }
                 return false;
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            NProgress.start();
+        });
+
+        window.addEventListener("load", function() {
+            NProgress.done();
         });
     </script>
 </body>

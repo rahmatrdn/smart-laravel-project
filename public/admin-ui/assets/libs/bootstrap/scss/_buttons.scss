@@ -38,7 +38,7 @@
   @include border-radius(var(--#{$prefix}btn-border-radius));
   @include gradient-bg(var(--#{$prefix}btn-bg));
   @include box-shadow(var(--#{$prefix}btn-box-shadow));
-  @include transition($btn-transition);
+  // @include transition($btn-transition);
 
   &:hover {
     color: var(--#{$prefix}btn-hover-color);

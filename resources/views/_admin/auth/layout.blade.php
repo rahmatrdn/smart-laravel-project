@@ -7,7 +7,7 @@
 
     @include('_admin._layout.favicon')
 
-    <title>Digital Library | {{ env('LIB_NAME') }}</title>
+    <title>{{ env('APP_NAME') }}</title>
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/styles.min.css" />
 </head>
 

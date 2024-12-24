@@ -29,6 +29,8 @@ Route::prefix('admin')->middleware(["auth", "access-type:2"])->group(function ()
 
 Route::prefix('admin')->middleware("auth")->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/test', [DashboardController::class, 'test']);
+    Route::get('/test2', [DashboardController::class, 'test2']);
 
     Route::prefix('member')->group(function () {
         Route::get('/', [MemberController::class, 'index']);
