@@ -38,7 +38,7 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <aside class="left-sidebar">
+        <aside class="left-sidebar" style="z-index: 0 !important">
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -63,7 +63,7 @@
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <header class="app-header p-0 pe-md-3">
+            <header class="app-header p-0 pe-md-3" style="z-index: -1 !important">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <div class="d-none d-md-none d-lg-block">

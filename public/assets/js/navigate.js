@@ -38,6 +38,18 @@ function loadPage(url = "", returnedJson = false) {
     });
 }
 
+$(document).on('click', 'a:not([navigate]):not([navigate-api])', function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+
+    if (navigator.onLine) {
+        NProgress.start();
+        window.location.href = url;
+    } else {
+        lostInternet();
+    }
+});
+
 $(document).on('click', '[navigate]', function (e) {
     e.preventDefault();
     var url = $(this).attr('href');
