@@ -10,7 +10,7 @@
 
                 <ul class="nav nav-pills">
                     <li class="nav-item me-2">
-                        <a class="nav-link rounded-5 px-4 active shadow-sm" aria-current="page">Umum</a>
+                        <a class="nav-link rounded-5 px-4 active shadow-sm" aria-current="page" href="#">Umum</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link rounded-5 px-4 shadow-sm" href="{{ base_url('setting/change-password') }}"

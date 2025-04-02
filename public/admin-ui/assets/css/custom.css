@@ -19,6 +19,13 @@ input::placeholder {
 }
 
 
+.app-header {
+    z-index: -1 !important
+}
+.left-sidebar {
+    z-index: 0 !important
+}
+
 @media only screen and (max-width: 600px) {
     .container-fluid {
         padding: 10px !important;
@@ -33,6 +40,13 @@ input::placeholder {
     .card-body {
         padding: 20px !important;
     }
+
+    .app-header {
+        z-index: 1 !important
+    }
+    .left-sidebar {
+        z-index: 1000 !important
+    } 
 }
 
 .letter-spacing-1 {

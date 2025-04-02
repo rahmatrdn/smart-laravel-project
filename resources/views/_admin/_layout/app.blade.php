@@ -38,11 +38,11 @@
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
-        <aside class="left-sidebar" style="z-index: 0 !important">
+        <aside class="left-sidebar" style="">
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a class="text-nowrap logo-img">
+                    <a class="text-nowrap logo-img" href="#">
                         <img src="{{ url('admin-ui') }}/assets/images/logos/logo-2.png" alt=""
                             width="200" />
                     </a>
@@ -63,7 +63,7 @@
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <header class="app-header p-0 pe-md-3" style="z-index: -1 !important">
+            <header class="app-header p-0 pe-md-3" style="">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <div class="d-none d-md-none d-lg-block">
@@ -75,7 +75,7 @@
                         <ul
                             class="navbar-nav flex-row ms-auto align-items-center justify-content-end d-block d-xl-none d-lg-none">
                             <li class="nav-item dropdown">
-                                <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                                <a class="nav-link " href="#" id="drop2" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     <img src="{{ url('admin-ui') }}/assets/images/logos/logo-2.png"
                                         alt="" width="150" class="img-fluid" />
@@ -85,7 +85,7 @@
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item d-block d-xl-none d-lg-block">
-                            <a class="nav-link sidebartoggler py-0" id="headerCollapse" href="javascript:void(0)">
+                            <a class="nav-link sidebartoggler py-0" id="headerCollapse" href="javascript:void(0)" navigate>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"
                                     viewBox="0 0 24 24">
                                     <g>
@@ -239,6 +239,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            NProgress.set(0.2);
             NProgress.start();
         });
 

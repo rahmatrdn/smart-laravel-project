@@ -38,13 +38,25 @@ function loadPage(url = "", returnedJson = false) {
     });
 }
 
-$(document).on('click', 'a:not([navigate]):not([navigate-api])', function (e) {
+$(window).on('beforeunload', function () {
+    if (navigator.onLine) {
+        NProgress.set(0.2);
+        NProgress.start();
+    }
+});
+
+$(document).on('click', 'a:not([navigate]):not([navigate-api]):not([navigate-api-confirm]):not(.sidebar-link)', function (e) {
     e.preventDefault();
     var url = $(this).attr('href');
 
     if (navigator.onLine) {
+        NProgress.set(0.2);
         NProgress.start();
         window.location.href = url;
+
+        setTimeout(function () {
+            NProgress.done();
+        }, 2000);
     } else {
         lostInternet();
     }
@@ -131,7 +143,7 @@ $(document).on('submit', 'form[navigate-form]', function (e) {
     var submitButton = form.find('button[type="submit"]');
     var buttonText = submitButton.text(); // Menyimpan teks asli tombol submit
 
-    
+
     defaultSubmitBtnText = ""
     if (defaultSubmitBtnText == "") {
         defaultSubmitBtnText = buttonText
