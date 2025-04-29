@@ -134,7 +134,6 @@ function showValidationErrors(errors) {
 defaultSubmitBtnText = $('button[type="submit"]').text()
 
 $(document).on('submit', 'form[navigate-form]', function (e) {
-
     e.preventDefault(); // Mencegah default form submit (reload halaman)
     var form = $(this);
     var url = form.attr('action'); // URL dari action form
@@ -204,6 +203,87 @@ $(document).on('submit', 'form[navigate-form]', function (e) {
         });
     } else {
         lostInternet();
+    }
+});
+
+$(document).on('submit', 'form[navigate-form-get]', function (e) {
+    e.preventDefault(); // Prevent the default GET submission (full page reload)
+
+    var form = $(this);
+    var baseUrl = form.attr('action'); // Get the base URL from the form's action attribute
+    var formData = form.serialize(); // Serialize form data into query string format (e.g., "param1=value1&param2=value2")
+
+    var submitButton = form.find('button[type="submit"]');
+    var originalButtonText = submitButton.text(); // Store the original button text
+
+    // --- Improved default button text handling ---
+    // Store the original text in a data attribute if it's not already set
+    if (!submitButton.data('original-text')) {
+        submitButton.data('original-text', originalButtonText);
+    }
+    var defaultSubmitBtnText = submitButton.data('original-text');
+    // --- End improved button text handling ---
+
+    // Construct the final URL with query parameters
+    var newUrl = baseUrl;
+    if (formData) { // Only add query string if formData is not empty
+        // Check if the baseUrl already contains a query string
+        newUrl += (baseUrl.indexOf('?') === -1 ? '?' : '&') + formData;
+    }
+
+    console.log("Navigating to (GET):", newUrl); // Log the target URL
+
+    if (navigator.onLine) {
+        NProgress.start(); // Start the progress indicator
+        submitButton.prop('disabled', true); // Disable button using prop for better compatibility
+        submitButton.html(
+            '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span> Memproses ...' // Show loading state
+        );
+
+        try {
+            // Update the browser's history without reloading the page
+            // Pass the newUrl in the state object for potential use with popstate
+            window.history.pushState({ path: newUrl }, '', newUrl);
+
+            // Assume loadPage function exists to fetch and inject content for the newUrl
+            // loadPage should ideally handle NProgress.done() upon its completion or error.
+            loadPage(newUrl);
+
+            // --- Cleanup and Button Reset ---
+            // It's often better if loadPage signals completion (success/error)
+            // to handle NProgress.done() and button reset.
+            // But for simplicity mirroring the original structure, we reset here.
+            // Consider moving this logic into loadPage's success/error handling if possible.
+
+            // Remove modal backdrops if necessary (might be unrelated, keep from original)
+            $('.modal-backdrop.fade.show').remove();
+            $('body').removeAttr('style').removeClass(); // Reset body styles if needed
+
+            // Re-enable the button and restore its original text
+            submitButton.prop('disabled', false);
+            submitButton.html(defaultSubmitBtnText);
+
+            // If loadPage doesn't handle NProgress.done(), call it here.
+            // NProgress.done(); // Uncomment if loadPage doesn't handle it.
+
+            // --- End Cleanup and Button Reset ---
+
+        } catch (error) {
+            console.error("Error during GET navigation:", error);
+            // Use your existing notification system
+            showToast("error", 'Terjadi kesalahan saat mencoba navigasi.');
+            NProgress.done(); // Ensure progress bar stops on error
+            // Restore button state on error
+            submitButton.prop('disabled', false);
+            submitButton.html(defaultSubmitBtnText);
+        }
+
+    } else {
+        // Handle the case where the browser is offline
+        lostInternet(); // Call your existing offline handler function
+        // Optionally, restore button state if offline
+        submitButton.prop('disabled', false);
+        submitButton.html(defaultSubmitBtnText);
     }
 });
 

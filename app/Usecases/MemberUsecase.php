@@ -86,7 +86,7 @@ class MemberUsecase extends Usecase
                 ->first(['b.*', 'bc.name as category']);
 
             return Response::buildSuccess(
-                data: collect($data)->toArray()
+                data: collect($data)->toArray(),
             );
         } catch (\Exception $e) {
             Log::error($e->getMessage(), [

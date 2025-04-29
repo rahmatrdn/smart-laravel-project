@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/custom.css?v={{ env('APP_VERSION') }}" />
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/sidebar.css?v={{ env('APP_VERSION') }}" />
     <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/dark.css?v={{ env('APP_VERSION') }}" />
+    <link rel="stylesheet" href="{{ url('admin-ui') }}/assets/css/utils.css?v={{ env('APP_VERSION') }}" />
 
     {{-- External CSS Libraries --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css">
@@ -130,7 +131,7 @@
 
     <script src="{{ url('assets/js/navigate.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/3.0.7/metisMenu.min.js"></script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script> --}}

@@ -99,7 +99,7 @@
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
-  --bs-body-font-size: 0.935rem;
+  --bs-body-font-size: 0.8rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #7b838a;
@@ -244,47 +244,42 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 }
 
 h1, .h1 {
-  font-size: calc(1.35875rem + 1.305vw);
+  font-size: calc(1.325rem + 0.9vw);
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.3375rem;
+    font-size: 2rem;
   }
 }
 
 h2, .h2 {
-  font-size: calc(1.312rem + 0.744vw);
+  font-size: calc(1.285rem + 0.42vw);
 }
 @media (min-width: 1200px) {
   h2, .h2 {
-    font-size: 1.87rem;
+    font-size: 1.6rem;
   }
 }
 
 h3, .h3 {
-  font-size: calc(1.288625rem + 0.4635vw);
+  font-size: calc(1.265rem + 0.18vw);
 }
 @media (min-width: 1200px) {
   h3, .h3 {
-    font-size: 1.63625rem;
+    font-size: 1.4rem;
   }
 }
 
 h4, .h4 {
-  font-size: calc(1.26525rem + 0.183vw);
-}
-@media (min-width: 1200px) {
-  h4, .h4 {
-    font-size: 1.4025rem;
-  }
+  font-size: 1.2rem;
 }
 
 h5, .h5 {
-  font-size: 1.16875rem;
+  font-size: 1rem;
 }
 
 h6, .h6 {
-  font-size: 0.935rem;
+  font-size: 0.8rem;
 }
 
 p {
@@ -610,7 +605,7 @@ progress {
 }
 
 .lead {
-  font-size: 1.16875rem;
+  font-size: 1rem;
   font-weight: 300;
 }
 
@@ -704,7 +699,7 @@ progress {
 
 .blockquote {
   margin-bottom: 1rem;
-  font-size: 1.16875rem;
+  font-size: 1rem;
 }
 .blockquote > :last-child {
   margin-bottom: 0;
@@ -2316,13 +2311,13 @@ progress {
 .col-form-label-lg {
   padding-top: calc(0.5rem + var(--bs-border-width));
   padding-bottom: calc(0.5rem + var(--bs-border-width));
-  font-size: 1.16875rem;
+  font-size: 1rem;
 }
 
 .col-form-label-sm {
   padding-top: calc(0.25rem + var(--bs-border-width));
   padding-bottom: calc(0.25rem + var(--bs-border-width));
-  font-size: 0.818125rem;
+  font-size: 0.7rem;
 }
 
 .form-text {
@@ -2335,7 +2330,7 @@ progress {
   display: block;
   width: 100%;
   padding: 10px 16px;
-  font-size: 0.935rem;
+  font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.5;
   color: var(--bs-heading-color);
@@ -2428,7 +2423,7 @@ progress {
 .form-control-sm {
   min-height: calc(1.5em + 0.5rem + calc(var(--bs-border-width) * 2));
   padding: 0.25rem 0.5rem;
-  font-size: 0.818125rem;
+  font-size: 0.7rem;
   border-radius: var(--bs-border-radius-sm);
 }
 .form-control-sm::file-selector-button {
@@ -2440,7 +2435,7 @@ progress {
 .form-control-lg {
   min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2));
   padding: 0.5rem 1rem;
-  font-size: 1.16875rem;
+  font-size: 1rem;
   border-radius: var(--bs-border-radius-lg);
 }
 .form-control-lg::file-selector-button {
@@ -2487,7 +2482,7 @@ textarea.form-control-lg {
   display: block;
   width: 100%;
   padding: 10px 38px 10px 16px;
-  font-size: 0.935rem;
+  font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.5;
   color: var(--bs-heading-color);
@@ -2528,7 +2523,7 @@ textarea.form-control-lg {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
-  font-size: 0.818125rem;
+  font-size: 0.7rem;
   border-radius: var(--bs-border-radius-sm);
 }
 
@@ -2536,7 +2531,7 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
-  font-size: 1.16875rem;
+  font-size: 1rem;
   border-radius: var(--bs-border-radius-lg);
 }
 
@@ -2878,7 +2873,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   padding: 10px 16px;
-  font-size: 0.935rem;
+  font-size: 0.8rem;
   font-weight: 400;
   line-height: 1.5;
   color: var(--bs-heading-color);
@@ -2894,7 +2889,7 @@ textarea.form-control-lg {
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.16875rem;
+  font-size: 1rem;
   border-radius: var(--bs-border-radius-lg);
 }
 
@@ -2903,7 +2898,7 @@ textarea.form-control-lg {
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
   padding: 0.25rem 0.5rem;
-  font-size: 0.818125rem;
+  font-size: 0.7rem;
   border-radius: var(--bs-border-radius-sm);
 }
 
@@ -2953,7 +2948,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.818125rem;
+  font-size: 0.7rem;
   color: #fff;
   background-color: var(--bs-success);
   border-radius: var(--bs-border-radius);
@@ -3043,7 +3038,7 @@ textarea.form-control-lg {
   max-width: 100%;
   padding: 0.25rem 0.5rem;
   margin-top: 0.1rem;
-  font-size: 0.818125rem;
+  font-size: 0.7rem;
   color: #fff;
   background-color: var(--bs-danger);
   border-radius: var(--bs-border-radius);
@@ -3861,14 +3856,14 @@ textarea.form-control-lg {
 .btn-lg, .btn-group-lg > .btn {
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 1rem;
-  --bs-btn-font-size: 1.16875rem;
+  --bs-btn-font-size: 1rem;
   --bs-btn-border-radius: 9px;
 }
 
 .btn-sm, .btn-group-sm > .btn {
   --bs-btn-padding-y: 0.25rem;
   --bs-btn-padding-x: 0.5rem;
-  --bs-btn-font-size: 0.818125rem;
+  --bs-btn-font-size: 0.7rem;
   --bs-btn-border-radius: var(--bs-border-radius-sm);
 }
 
@@ -3941,7 +3936,7 @@ textarea.form-control-lg {
   --bs-dropdown-padding-x: 0;
   --bs-dropdown-padding-y: 0.5rem;
   --bs-dropdown-spacer: 0.125rem;
-  --bs-dropdown-font-size: 0.935rem;
+  --bs-dropdown-font-size: 0.8rem;
   --bs-dropdown-color: var(--bs-body-color);
   --bs-dropdown-bg: #fff;
   --bs-dropdown-border-color: var(--bs-border-color-translucent);
@@ -4201,7 +4196,7 @@ textarea.form-control-lg {
   display: block;
   padding: var(--bs-dropdown-header-padding-y) var(--bs-dropdown-header-padding-x);
   margin-bottom: 0;
-  font-size: 0.818125rem;
+  font-size: 0.7rem;
   color: var(--bs-dropdown-header-color);
   white-space: nowrap;
 }
@@ -4486,15 +4481,15 @@ textarea.form-control-lg {
   --bs-navbar-hover-color: #635bff;
   --bs-navbar-disabled-color: rgba(var(--bs-emphasis-color-rgb), 0.3);
   --bs-navbar-active-color: rgba(var(--bs-emphasis-color-rgb), 1);
-  --bs-navbar-brand-padding-y: 0.3246875rem;
+  --bs-navbar-brand-padding-y: 0.35rem;
   --bs-navbar-brand-margin-end: 1rem;
-  --bs-navbar-brand-font-size: 1.16875rem;
+  --bs-navbar-brand-font-size: 1rem;
   --bs-navbar-brand-color: rgba(var(--bs-emphasis-color-rgb), 1);
   --bs-navbar-brand-hover-color: rgba(var(--bs-emphasis-color-rgb), 1);
   --bs-navbar-nav-link-padding-x: 0.5rem;
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.75rem;
-  --bs-navbar-toggler-font-size: 1.16875rem;
+  --bs-navbar-toggler-font-size: 1rem;
   --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28123, 131, 138, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   --bs-navbar-toggler-border-color: rgba(var(--bs-emphasis-color-rgb), 0.15);
   --bs-navbar-toggler-border-radius: 8px;
@@ -5131,7 +5126,7 @@ textarea.form-control-lg {
   align-items: center;
   width: 100%;
   padding: var(--bs-accordion-btn-padding-y) var(--bs-accordion-btn-padding-x);
-  font-size: 0.935rem;
+  font-size: 0.8rem;
   color: var(--bs-accordion-btn-color);
   text-align: left;
   background-color: var(--bs-accordion-btn-bg);
@@ -5275,7 +5270,7 @@ textarea.form-control-lg {
 .pagination {
   --bs-pagination-padding-x: 0.75rem;
   --bs-pagination-padding-y: 0.375rem;
-  --bs-pagination-font-size: 0.935rem;
+  --bs-pagination-font-size: 0.8rem;
   --bs-pagination-color: var(--bs-link-color);
   --bs-pagination-bg: var(--bs-body-bg);
   --bs-pagination-border-width: var(--bs-border-width);
@@ -5355,14 +5350,14 @@ textarea.form-control-lg {
 .pagination-lg {
   --bs-pagination-padding-x: 1.5rem;
   --bs-pagination-padding-y: 0.75rem;
-  --bs-pagination-font-size: 1.16875rem;
+  --bs-pagination-font-size: 1rem;
   --bs-pagination-border-radius: var(--bs-border-radius-lg);
 }
 
 .pagination-sm {
   --bs-pagination-padding-x: 0.5rem;
   --bs-pagination-padding-y: 0.25rem;
-  --bs-pagination-font-size: 0.818125rem;
+  --bs-pagination-font-size: 0.7rem;
   --bs-pagination-border-radius: var(--bs-border-radius-sm);
 }
 
@@ -5573,7 +5568,7 @@ textarea.form-control-lg {
 .progress,
 .progress-stacked {
   --bs-progress-height: 1rem;
-  --bs-progress-font-size: 0.70125rem;
+  --bs-progress-font-size: 0.6rem;
   --bs-progress-bg: var(--bs-secondary-bg);
   --bs-progress-border-radius: var(--bs-border-radius);
   --bs-progress-box-shadow: var(--bs-box-shadow-inset);
@@ -6523,7 +6518,7 @@ textarea.form-control-lg {
   --bs-tooltip-padding-x: 0.5rem;
   --bs-tooltip-padding-y: 0.25rem;
   --bs-tooltip-margin: ;
-  --bs-tooltip-font-size: 0.818125rem;
+  --bs-tooltip-font-size: 0.7rem;
   --bs-tooltip-color: var(--bs-body-bg);
   --bs-tooltip-bg: var(--bs-emphasis-color);
   --bs-tooltip-border-radius: var(--bs-border-radius);
@@ -6622,7 +6617,7 @@ textarea.form-control-lg {
 .popover {
   --bs-popover-zindex: 1070;
   --bs-popover-max-width: 276px;
-  --bs-popover-font-size: 0.818125rem;
+  --bs-popover-font-size: 0.7rem;
   --bs-popover-bg: var(--bs-body-bg);
   --bs-popover-border-width: var(--bs-border-width);
   --bs-popover-border-color: var(--bs-border-color-translucent);
@@ -6631,7 +6626,7 @@ textarea.form-control-lg {
   --bs-popover-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-popover-header-padding-x: 1rem;
   --bs-popover-header-padding-y: 0.5rem;
-  --bs-popover-header-font-size: 0.935rem;
+  --bs-popover-header-font-size: 0.8rem;
   --bs-popover-header-color: #29343d;
   --bs-popover-header-bg: var(--bs-secondary-bg);
   --bs-popover-body-padding-x: 1rem;

@@ -53,13 +53,18 @@
             </li>
 
             <span class="sidebar-divider lg my-4"></span>
-            <li class="sidebar-item">
-                <div class="d-grid gap-2">
-                    <a class="btn btn-outline-danger text-start rounded-3" href="{{ base_url('auth/logout') }}"
-                        aria-expanded="false" onclick="return confirm('Apakah kamu yakin?')">
-                        <span class="hide-menu"><b>Keluar Aplikasi</b></span>
-                    </a>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <p class="fs-10 mb-2">Kamu login sebagai</p>
+                    <p class="mb-0 fw-bolder fs-13">{{ Auth::user()->name }}</p>
+                    <p class="fs-10">{{ getUserAccessType(accessType()) }}</p>
+                    <div class="d-grid gap-2 mt-3">
+                        <a class="btn btn-outline-danger text-start rounded-3" href="{{ base_url('auth/logout/') }}"
+                            aria-expanded="false" onclick="return confirm('Apakah kamu yakin?')">
+                            <span class="hide-menu"><b>Keluar Aplikasi</b></span>
+                        </a>
+                    </div>
                 </div>
-            </li>
+            </div>
         </ul>
     </nav>

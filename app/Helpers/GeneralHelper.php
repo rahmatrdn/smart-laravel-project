@@ -407,3 +407,8 @@ function getUserAccessType($id)
         return null; // atau bisa diganti dengan nilai default jika ID tidak ditemukan
     }
 }
+
+function accessType()
+{
+    return session('access_type') ?? "";
+}

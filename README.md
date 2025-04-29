@@ -32,6 +32,11 @@ Follow these simple steps to set up the project:
    php artisan serve
    ```
 
+## How to Convert Sass to CSS
+```bash
+sass public/admin-ui/assets/scss/styles.scss public/admin-ui/assets/css/style.css
+```
+
 That's it! Your application is now ready. Open it in your browser.
 
 ## Contribution

@@ -42,6 +42,8 @@ class MemberController extends Controller
 
     public function index(Request $req): View | Response
     {
+        $usecase = new MemberUsecase();
+        
         $data = $this->usecase->getAll($req->input());
 
         $memberCategories = $this->memberCategoryUsecase->getAll();
