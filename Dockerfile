@@ -32,10 +32,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     docker-php-ext-install -j$(nproc) zip gd pcntl opcache pdo pdo_mysql && \
     # Install redis extension via PECL
     pecl install redis && \
-    pecl install swoole && \
+    # pecl install swoole && \
     # Enable the PECL extension
     docker-php-ext-enable redis && \
-    docker-php-ext-enable swoole && \
+    # docker-php-ext-enable swoole && \
     # Clean up ONLY build dependencies (packages explicitly installed above will remain)
     apt-get purge -y --auto-remove build-essential \
     libzip-dev libpng-dev libjpeg-dev libfreetype6-dev && \
